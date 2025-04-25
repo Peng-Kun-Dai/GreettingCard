@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.greettingcard.ui.theme.GreettingCardTheme
 import com.example.greettingcard.ui.theme.Pink80
 
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
 
         //通过可组合函数定义布局
         setContent {
-            GreettingCardTheme {
+/*            GreettingCardTheme {
 
 //                Surface(
 //                    color = MaterialTheme.colorScheme.background
@@ -42,33 +43,63 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
                     Greeting(
-                        name = "Android", modifier = Modifier.padding(innerPadding)
+                        name = "Android",
+                        modifier = Modifier.padding(innerPadding)
                     )
+
+                }
+            }*/
+            GreettingCardTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+
                 }
             }
         }
     }
 }
+//
+///**
+// * 任何标有 @Composable 注解的函数都可通过 setContent() 函数或其他可组合函数进行调用。
+// * 该注解可告知 Kotlin 编译器 Jetpack Compose 使用的这个函数会生成 UI。
+// */
+//@Composable
+//fun Greeting(name: String, modifier: Modifier = Modifier) {
+//    Surface(color = Color.Cyan) {
+//        Text(
+//            text = "Hello $name!",
+//            modifier = modifier.padding(24.dp)
+//        )
+//    }
+//}
+//
+//
+////无需构建整个应用就能查看可组合函数的外观。
+//@Preview(
+//    showBackground = true,
+//    showSystemUi = false,
+//    name = "My Preview"
+//)
+//@Composable
+//fun GreetingPreview() {
+//    GreettingCardTheme {
+//        Greeting("Jayce")
+//    }
+//}
 
-/**
- * 任何标有 @Composable 注解的函数都可通过 setContent() 函数或其他可组合函数进行调用。
- * 该注解可告知 Kotlin 编译器 Jetpack Compose 使用的这个函数会生成 UI。
- */
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Surface(color = Color.Cyan) {
-        Text(
-            text = "Hi, my name is $name!", modifier = modifier.padding(24.dp)
-        )
-    }
+fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
+    Text(
+        text = message,
+        fontSize = 50.sp,
+        lineHeight = 60.sp,
+    )
 }
 
-
-//无需构建整个应用就能查看可组合函数的外观。
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    GreettingCardTheme {
-        Greeting("Maga")
-    }
+fun BirthdayCardPreview() {
+    GreetingText(message = "Happy Birthday Sam!", from = "Jayce")
 }
